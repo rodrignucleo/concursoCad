@@ -10,32 +10,32 @@
             </div>
         </div>
 
-        <div id="game-create-container" class="col-md-6 offset-md-3">
+        <div id="concurso-create-container" class="col-md-6 offset-md-3">
             <form action="/concursos_new" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="form-group">
-                    <label for="nome"><font color="red">*</font>Nome Completo:</label>
+                    <label for="title"><font color="red">*</font>Nome Completo:</label>
                     <input type="text" class="form-control" id="nome" name="nome" placeholder="Nome Completo">
                 </div>
                 <div class="form-group">
-                    <label for="nome"><font color="red">*</font>CPF:</label>
+                    <label for="title"><font color="red">*</font>CPF:</label>
                     <input type="text" class="form-control" id="cpf" name="cpf" placeholder="CPF">
                 </div>
                 <div class="form-group">
-                    <label for="nome"><font color="red">*</font>Endereço:</label>
+                    <label for="title"><font color="red">*</font>Endereço:</label>
                     <input type="text" class="form-control" id="endereco" name="endereco" placeholder="Endereço">
                 </div>
                 <div class="form-group">
-                    <label for="nome"><font color="red">*</font>Cargo:</label>
+                    <label for="title"><font color="red">*</font>Cargo:</label>
                     <input type="textarea" class="form-control" id="cargo" name="cargo" placeholder="Cargo">
                 </div>
 
 
                 <div class="form-group row">
                     <div class="col-4">
-                        <label for="nome"><font color="red">*</font>Estado:</label>
+                        <label for="title"><font color="red">*</font>Estado:</label>
                         <div class=form-group>
-                                <select name="estado[]">
+                                <select name="estado[]" id="estados_id" class="form-control">
                                         @foreach ($estado as $estado)
                                         <option value="{{$estado->estados_id}}">
                                             {{$estado->sigla}}
@@ -43,9 +43,9 @@
                                         @endforeach
                                 </select>
                         </div>
-                        <label for="nome"><font color="red">*</font>Cidade:</label>
+                        <label for="title"><font color="red">*</font>Cidade:</label>
                         <div class=form-group>
-                                <select name="cidade[]">
+                                <select name="cidade[]" id="cidades_id" class="form-control">
                                     @foreach ($cidade as $cidade)
                                         <option value="{{$cidade->cidades_id}}">{{$cidade->nome}}</option>
                                     @endforeach
