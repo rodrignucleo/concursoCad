@@ -17,3 +17,5 @@ use App\Http\Controllers\ConcursoController;
 Route::get('/', [ConcursoController::class, 'index']);
 
 Route::get('/concursos_new', [ConcursoController::class, 'new']);
+
+Route::get('/novo_candidato', [ConcursoController::class, 'novocandidato']);
