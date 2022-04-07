@@ -1,8 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ConcursoController;
 
+use App\Http\Controllers\ConcursoController;
+use App\Http\Controllers\PessoaFisicaController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,6 +17,5 @@ use App\Http\Controllers\ConcursoController;
 
 Route::get('/', [ConcursoController::class, 'index']);
 
-Route::get('/concursos_new', [ConcursoController::class, 'new']);
-
-Route::get('/novo_candidato', [ConcursoController::class, 'novocandidato']);
+Route::get('/concurso', [PessoaFisicaController::class, 'createPessoaFisica']);
+Route::post('/concurso', [PessoaFisicaController::class, 'store']);

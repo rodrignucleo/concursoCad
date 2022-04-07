@@ -31,7 +31,7 @@
                     </li>
                     
                     <li class="nav-item">
-                        <a class="nav-link" href="/novo_candidato">Nova Inscrição</a>
+                        <a class="nav-link" href="/concurso">Nova Inscrição</a>
                     </li>
                       
                   @auth
@@ -56,7 +56,9 @@
             @endguest
             </div>
           </nav>
-
+          
+          <script type="text/javascript" src="{{ asset('js/jquery.js') }}"></script>
+          <script type="text/javascript" src="{{ asset('js/mask.js') }}"></script>
           @yield('content')
 
 

@@ -6,12 +6,22 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+
 use App\Models\PessoaFisica;
+use App\Models\Estado;
+use App\Models\Cidade;
 
 class PessoaFisicaController extends Controller
 {
    
     public function __construct(){}
+
+    public function createPessoaFisica(){
+        $estado = Estado::all();
+        $cidade = Cidade::all();
+
+        return view('concursos.createPessoaFisica', ['estado' => $estado, 'cidade' => $cidade]);
+    }
 
     public function store(Request $request)
     {
@@ -25,6 +35,7 @@ class PessoaFisicaController extends Controller
 			    'estado_id' => 'required',
             ]
         );
+        
         
 	    $pessoa = new PessoaFisica();
 	    $pessoa->nome = $request->nome;
