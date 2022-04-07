@@ -6,7 +6,7 @@
     <main role="main">
         <div class="jumbotron">
             <div class="container">
-            <h1 class="display-3">Incrição do Candidato</h1>
+            <h1 class="display-3">Inscrição do Candidato</h1>
             </div>
         </div>
 
@@ -15,19 +15,19 @@
                 @csrf
                 <div class="form-group">
                     <label for="nome"><font color="red">*</font>Nome Completo:</label>
-                    <input type="text" class="form-control" id="nome" name="nome" placeholder="nome">
+                    <input type="text" class="form-control" id="nome" name="nome" placeholder="Nome Completo">
                 </div>
                 <div class="form-group">
                     <label for="nome"><font color="red">*</font>CPF:</label>
-                    <input type="text" class="form-control" id="cpf" name="cpf" placeholder="cpf">
+                    <input type="text" class="form-control" id="cpf" name="cpf" placeholder="CPF">
                 </div>
                 <div class="form-group">
                     <label for="nome"><font color="red">*</font>Endereço:</label>
-                    <input type="text" class="form-control" id="endereco" name="endereco" placeholder="endereco">
+                    <input type="text" class="form-control" id="endereco" name="endereco" placeholder="Endereço">
                 </div>
                 <div class="form-group">
                     <label for="nome"><font color="red">*</font>Cargo:</label>
-                    <input type="textarea" class="form-control" id="cargo" name="cargo" placeholder="cargo">
+                    <input type="textarea" class="form-control" id="cargo" name="cargo" placeholder="Cargo">
                 </div>
 
 
@@ -35,16 +35,21 @@
                     <div class="col-4">
                         <label for="nome"><font color="red">*</font>Estado:</label>
                         <div class=form-group>
-                            @foreach ($estado as $estado)
-                            <form name="form5" method="post" action="">
                                 <select name="estado[]">
-                                    <option value="{{$estado->sigla}}">
-                                        {{$estado->sigla}}
-                                    </option>
+                                        @foreach ($estado as $estado)
+                                        <option value="{{$estado->estados_id}}">
+                                            {{$estado->sigla}}
+                                        </option>
+                                        @endforeach
                                 </select>
-                            </form>
-
-                            @endforeach
+                        </div>
+                        <label for="nome"><font color="red">*</font>Cidade:</label>
+                        <div class=form-group>
+                                <select name="cidade[]">
+                                    @foreach ($cidade as $cidade)
+                                        <option value="{{$cidade->cidades_id}}">{{$cidade->nome}}</option>
+                                    @endforeach
+                                </select>
                         </div>
                     </div>
                   </div>

@@ -31,7 +31,7 @@
                     </li>
                     
                     <li class="nav-item">
-                        <a class="nav-link" href="/concursos_new">Minhas Inscrições</a>
+                        <a class="nav-link" href="/novo_candidato">Nova Inscrição</a>
                     </li>
                       
                   @auth

@@ -20,7 +20,7 @@
                   <a href="/novo_candidato"><img class="d-block w-100" src="/img/banner1.png" class="img-fluid" height="700" alt="inscricao"></a>
                 </div>
                 <div class="carousel-item">
-                  <img class="d-block w-100" src="/img/banner1.png" class="img-fluid" height="700" alt="inscricao"> 
+                  <a href="/novo_candidato"><img class="d-block w-100" src="/img/banner1.png" class="img-fluid" height="700" alt="inscricao"></a>
                 </div>
 
               <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
