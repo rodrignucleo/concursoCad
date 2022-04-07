@@ -53,7 +53,7 @@
                 @guest
                     <a class="btn btn-outline-success my-2 my-sm-0" href="/login">Login</a>
                     <a class="btn btn-outline-light my-2 my-sm-0" href="/register">Cadastro</a>
-            @endguest
+                @endguest
             </div>
           </nav>
           

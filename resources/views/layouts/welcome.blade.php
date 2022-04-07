@@ -7,7 +7,7 @@
             <!-- Principal jumbotron, para a principal mensagem de marketing ou call to action -->
             <div class="jumbotron">
               <div class="container">
-                <h1 class="display-3">Olá!</h1>
+                <h1 class="display-3">Seja bem vindo cadConcursos!</h1>
                 <p> </p>
               </div>
             </div>
@@ -15,14 +15,22 @@
             <!-- Carousel de imagens com controle -->
             <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
               <div class="carousel-inner">
-                
+                @guest
+                <div class="carousel-item active">
+                  <a href="/register"><img class="d-block w-100" src="/img/banner1.png" class="img-fluid" height="700" alt="inscricao"></a>
+                </div>
+                <div class="carousel-item">
+                  <a href="/register"><img class="d-block w-100" src="/img/banner1.png" class="img-fluid" height="700" alt="inscricao"></a>
+                </div>
+                @endguest
+                @auth
                 <div class="carousel-item active">
                   <a href="/concurso"><img class="d-block w-100" src="/img/banner1.png" class="img-fluid" height="700" alt="inscricao"></a>
                 </div>
                 <div class="carousel-item">
                   <a href="/concurso"><img class="d-block w-100" src="/img/banner1.png" class="img-fluid" height="700" alt="inscricao"></a>
                 </div>
-
+                @endauth
               <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                 <span class="sr-only">Anterior</span>
