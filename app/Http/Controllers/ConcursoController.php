@@ -13,10 +13,10 @@ class ConcursoController extends Controller
         return view('layouts.welcome');
     }
 
-    public function novocandidato(Request $request){
+    public function concurso(Request $request){
         $estado = Estado::all();
         $cidade = Cidade::all();
 
-        return view('concursos.novoCandidato', ['estado' => $estado, 'cidade' => $cidade]);
+        return view('concursos.concurso', ['estado' => $estado, 'cidade' => $cidade]);
     }
 }
