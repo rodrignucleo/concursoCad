@@ -25,26 +25,29 @@ class PessoaFisicaController extends Controller
 
     public function store(Request $request)
     {
-        $this->validate(
+        /* $this->validate(
             $request,
             [
                 'nome' => 'required',
 			    'cpf' => 'required',
 			    'endereco' => 'required',
-			    'cidade_id' => 'required',
-			    'estado_id' => 'required',
+			    'cidades_id' => 'required',
+			    'estados_id' => 'required',
             ]
         );
-        
+        */
         
 	    $pessoa = new PessoaFisica();
 	    $pessoa->nome = $request->nome;
 	    $pessoa->cpf = $request->cpf;
 	    $pessoa->endereco = $request->endereco;
-	    $pessoa->cidade_id = $request->cidade_id;
-	    $pessoa->estado_id = $request->estado_id;
+	    $pessoa->cidades_id = $request->cidades_id;
+	    $pessoa->estados_id = $request->estados_id;
 	    
-        return json_encode(PessoaFisica::createPessoaFisica($pessoa));
+
+        $pessoa->save();
+        return redirect('/');
+        #return json_encode(PessoaFisica::createPessoaFisica($pessoa));
     }
     
     public function update(Request $request)

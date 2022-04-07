@@ -11,7 +11,7 @@
         </div>
 
         <div id="concurso-create-container" class="col-md-6 offset-md-3">
-            <form action="/" method="POST" enctype="multipart/form-data">
+            <form action="/concurso" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="form-group">
                     <label for="title"><font color="red">*</font>Nome Completo:</label>
@@ -27,18 +27,18 @@
                 </div>
                 <div class="form-group">
                     <label for="title"><font color="red">*</font>Endereço:</label>
-                    <input type="text" class="form-control" id="endereco" name="endereco" placeholder="Endereço">
+                    <input type="text" class="form-control" id="endereco" name="endereco" placeholder="Endereço" required="required">
                 </div>
                 <div class="form-group">
                     <label for="title"><font color="red">*</font>Cargo:</label>
-                    <input type="textarea" class="form-control" id="cargo" name="cargo" placeholder="Cargo">
+                    <input type="textarea" class="form-control" id="cargo" name="cargo" placeholder="Cargo" required="required">
                 </div>
 
                     <div class="form-group row">
                         <div class="col-4">
                             <label for="title"><font color="red">*</font>Estado:</label>
                             <div class=form-group>
-                                    <select name="estado[]" id="estados_id" class="form-control">
+                                    <select name="estados_id" id="estados_id" class="form-control">
                                             @foreach ($estado as $estado)
                                             <option value="{{$estado->estados_id}}">
                                                 {{$estado->sigla}}
@@ -48,9 +48,11 @@
                             </div>
                             <label for="title"><font color="red">*</font>Cidade:</label>
                             <div class=form-group>
-                                    <select name="cidade[]" id="cidades_id" class="form-control">
+                                    <select name="cidades_id" id="cidades_id" class="form-control">
                                         @foreach ($cidade as $cidade)
-                                            <option value="{{$cidade->cidades_id}}">{{$cidade->nome}}</option>
+                                            <option value="{{$cidade->cidades_id}}">
+                                                {{$cidade->nome}}
+                                            </option>
                                         @endforeach
                                     </select>
                             </div>
