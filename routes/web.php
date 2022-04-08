@@ -17,8 +17,10 @@ use App\Http\Controllers\PessoaFisicaController;
 
 Route::get('/', [ConcursoController::class, 'index']);
 
-Route::get('/concurso', [PessoaFisicaController::class, 'createPessoaFisica'], [InscricaoController::class, 'createPessoaFisica']);
-Route::post('/concurso', [PessoaFisicaController::class, 'store']);
+Route::get('/concurso', [PessoaFisicaController::class, 'createPessoaFisica'], [InscricaoController::class, 'createPessoaFisica'])->middleware('auth');
+Route::post('/concurso', [PessoaFisicaController::class, 'store'])->middleware('auth');
+
+Route::get('/meus_concursos', [ConcursoController::class, 'meusConcursos']);
 
 Route::middleware([
     'auth:sanctum',

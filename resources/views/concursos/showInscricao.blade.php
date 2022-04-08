@@ -4,18 +4,25 @@
 
 @section('content')
     <main role="main">
+       <!-- Principal jumbotron, para a principal mensagem de marketing ou call to action -->
+       <div class="jumbotron">
+        <div class="container">
+          @auth
+          <h1 class="display-3">Inscrições de {{$user->name}}!</h1>
+          <p> </p>
+          @endauth
+        </div>
+      </div>
+
         <div class="col-md-10 offset-md-1">
         <section class="mostraGames">
-            @foreach ($games as $games)
-              <h1> {{$games->nome}} </h1>
-              <br><b>Plataforma</b>
-              <ul id="plataforma-list"> 
-                @foreach ($games->plataforma as $plataforma)
-                    <li><span>{{$plataforma}}</span></li>
-                @endforeach
-              </ul>
+            @foreach ($inscricao as $inscricao)
+            <h5> <b>Nome</b></h5>
+              {{$inscricao->pessoa_fisica_id}}
+            <h5> <b>Cargo</b></h5>
+              {{$inscricao->cargo}}
+              
             @endforeach
-            
         </section>
         </div>
         

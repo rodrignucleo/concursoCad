@@ -31,7 +31,6 @@ class InscricaoController extends Controller
 	    $inscricao->cargo = $request->cargo;
 	    $inscricao->situacao = $request->situacao;
         
-        
         return redirect('/');
     }
     
@@ -57,20 +56,6 @@ class InscricaoController extends Controller
 
     public function index(Request $request)
     {
-    	/*$this->validate(
-            $request,
-            [
-			    'cargo' => 'nullable'
-            ]
-        );
-        
-        if(null != $request->cargo){
-        	$result = Inscricao::where('cargo', $request->cargo)->orderBy('cargo')->get();
-        	return json_encode($result);
-        }
-        
-        return json_encode(Inscricao::orderBy('cargo')->get());*/
-
         $inscricao = Inscricao::all();
         $pessoafisica = PessoaFisica::all();
         $estado = Estado::all();

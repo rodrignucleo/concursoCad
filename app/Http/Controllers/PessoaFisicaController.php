@@ -52,7 +52,7 @@ class PessoaFisicaController extends Controller
         $inscricao -> cargo = $request->cargo;
         $inscricao -> save();
         
-        return redirect('/');
+        return redirect('/meus_concursos');
     }
     
     public function update(Request $request)
