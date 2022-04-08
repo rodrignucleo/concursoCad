@@ -34,7 +34,9 @@
                         <a class="nav-link" href="/concurso">Nova Inscrição</a>
                     </li>
                       
-                  
+                    <li class="nav-item">
+                      <a class="nav-link" href="/meus_concursos">Meus Concursos</a>
+                  </li>
                 </ul>
 
                 @auth

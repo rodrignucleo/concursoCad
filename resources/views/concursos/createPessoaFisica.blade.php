@@ -15,8 +15,8 @@
                 @csrf
                 <div class="form-group">
                     <label for="title"><font color="red">*</font>Nome Completo:</label>
-                    <input type="text" class="form-control" id="nome" name="nome" placeholder="Nome Completo"
-                    required="required" oninput="this.value = this.value.replace(/[0-9]/g, '').replace(/[*-/+.;=_]/g, '');">
+                    <input type="text" class="form-control" id="nome" name="nome" placeholder="{{$user->name}}" value="{{$user->name}}" disabled=""
+                    required="required" oninput="this.value = this.value.replace(/[0-9]/g, '').replace(/[*-/+.;=_]/g, '');"> 
                 </div>
 
                 <div class="form-group">
@@ -54,6 +54,7 @@
                                                 {{$cidade->nome}}
                                             </option>
                                         @endforeach
+                                        
                                     </select>
                             </div>
                         </div>
