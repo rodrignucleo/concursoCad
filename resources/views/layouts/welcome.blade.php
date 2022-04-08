@@ -7,14 +7,8 @@
             <!-- Principal jumbotron, para a principal mensagem de marketing ou call to action -->
             <div class="jumbotron">
               <div class="container">
-                @guest
-                <h1 class="display-3">Seja bem vindo ao cadConcursos!</h1>
+                <h1 class="display-3">Seja bem vindo cadConcursos!</h1>
                 <p> </p>
-                @endguest
-                @auth
-                <h1 class="display-3">Seja bem vindo {{$user->name}}!</h1>
-                <p> </p>
-                @endauth
               </div>
             </div>
 
