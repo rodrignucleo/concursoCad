@@ -10,14 +10,13 @@ use App\Models\Cidade;
 class ConcursoController extends Controller
 {
     public function index(){
-        $user = auth()->user();
-        return view('layouts.welcome', ['user' => $user]);
+        return view('layouts.welcome');
     }
 
     public function concurso(Request $request){
         $estado = Estado::all();
         $cidade = Cidade::all();
-        
+
         return view('concursos.concurso', ['estado' => $estado, 'cidade' => $cidade]);
     }
 }

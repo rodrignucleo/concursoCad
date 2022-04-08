@@ -6,12 +6,10 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Illuminate\Database\Eloquent;
 
 use App\Models\PessoaFisica;
 use App\Models\Estado;
 use App\Models\Cidade;
-use App\Models\Inscricao;
 
 class PessoaFisicaController extends Controller
 {
@@ -21,14 +19,13 @@ class PessoaFisicaController extends Controller
     public function createPessoaFisica(){
         $estado = Estado::all();
         $cidade = Cidade::all();
-        $pessoafisica = PessoaFisica::all();
 
-        return view('concursos.createPessoaFisica', ['estado' => $estado, 'cidade' => $cidade, 'pessoafisica' => $pessoafisica]);
+        return view('concursos.createPessoaFisica', ['estado' => $estado, 'cidade' => $cidade]);
     }
 
     public function store(Request $request)
     {
-        $this->validate(
+        /* $this->validate(
             $request,
             [
                 'nome' => 'required',
@@ -38,21 +35,19 @@ class PessoaFisicaController extends Controller
 			    'estados_id' => 'required',
             ]
         );
-
+        */
+        
 	    $pessoa = new PessoaFisica();
 	    $pessoa->nome = $request->nome;
 	    $pessoa->cpf = $request->cpf;
 	    $pessoa->endereco = $request->endereco;
 	    $pessoa->cidades_id = $request->cidades_id;
 	    $pessoa->estados_id = $request->estados_id;
-	    $pessoa->save();
+	    
 
-        $inscricao = new Inscricao();
-        $inscricao -> pessoa_fisica_id = $pessoa->id;
-        $inscricao -> cargo = $request->cargo;
-        $inscricao -> save();
-        
+        $pessoa->save();
         return redirect('/');
+        #return json_encode(PessoaFisica::createPessoaFisica($pessoa));
     }
     
     public function update(Request $request)
