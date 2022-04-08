@@ -7,6 +7,9 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Inscricao;
+use App\Models\Estado;
+use App\Models\Cidade;
+use App\Models\PessoaFisica;
 
 class InscricaoController extends Controller
 {
@@ -27,8 +30,9 @@ class InscricaoController extends Controller
 	    $inscricao->pessoa_fisica_id = $request->pessoa_fisica_id;
 	    $inscricao->cargo = $request->cargo;
 	    $inscricao->situacao = $request->situacao;
-	    
-        return json_encode(Inscricao::createInscricao($inscricao));
+        
+        
+        return redirect('/');
     }
     
     public function update(Request $request)
@@ -53,7 +57,7 @@ class InscricaoController extends Controller
 
     public function index(Request $request)
     {
-    	$this->validate(
+    	/*$this->validate(
             $request,
             [
 			    'cargo' => 'nullable'
@@ -65,7 +69,14 @@ class InscricaoController extends Controller
         	return json_encode($result);
         }
         
-        return json_encode(Inscricao::orderBy('cargo')->get());
+        return json_encode(Inscricao::orderBy('cargo')->get());*/
+
+        $inscricao = Inscricao::all();
+        $pessoafisica = PessoaFisica::all();
+        $estado = Estado::all();
+        $cidade = Cidade::all();
+        
+        return view('concursos.createPessoaFisica', ['estado' => $estado, 'cidade' => $cidade, 'inscricao' => $inscricao, 'pessoafisica' => $pessoafisica]);
     }
 
     public function show(Request $request, $id)

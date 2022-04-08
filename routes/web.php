@@ -17,7 +17,7 @@ use App\Http\Controllers\PessoaFisicaController;
 
 Route::get('/', [ConcursoController::class, 'index']);
 
-Route::get('/concurso', [PessoaFisicaController::class, 'createPessoaFisica']);
+Route::get('/concurso', [PessoaFisicaController::class, 'createPessoaFisica'], [InscricaoController::class, 'createPessoaFisica']);
 Route::post('/concurso', [PessoaFisicaController::class, 'store']);
 
 Route::middleware([

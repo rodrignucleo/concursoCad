@@ -54,6 +54,7 @@
                                                 {{$cidade->nome}}
                                             </option>
                                         @endforeach
+                                        
                                     </select>
                             </div>
                         </div>
