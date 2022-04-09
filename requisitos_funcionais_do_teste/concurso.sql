@@ -22,7 +22,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `cidades` (
-  `cidades_id` int(11) NOT NULL,
+  `id` int(11) NOT NULL,
   `estados_id` int(11) NOT NULL,
   `nome` varchar(300) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -31,14 +31,15 @@ CREATE TABLE `cidades` (
 -- Dumping data for table `cidades`
 --
 
-INSERT INTO `cidades` (`cidades_id`, `estados_id`, `nome`) VALUES
+INSERT INTO `cidades` (`id`, `estados_id`, `nome`) VALUES
 (1, 1, 'Florianópolis'),
 (2, 1, 'Joinville'),
 (3, 1, 'Blumenau'),
 (4, 1, 'Lages'),
 (5, 2, 'Cascavel'),
 (6, 2, 'Londrina'),
-(7, 2, 'Curitiba');
+(7, 2, 'Curitiba'),
+(8, 3, 'São Paulo');
 
 -- --------------------------------------------------------
 
@@ -47,7 +48,7 @@ INSERT INTO `cidades` (`cidades_id`, `estados_id`, `nome`) VALUES
 --
 
 CREATE TABLE `estados` (
-  `estados_id` int(11) NOT NULL,
+  `id` int(11) NOT NULL,
   `nome` varchar(300) NOT NULL,
   `sigla` varchar(2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -56,9 +57,10 @@ CREATE TABLE `estados` (
 -- Dumping data for table `estados`
 --
 
-INSERT INTO `estados` (`estados_id`, `nome`, `sigla`) VALUES
+INSERT INTO `estados` (`id`, `nome`, `sigla`) VALUES
 (1, 'Santa Catarina', 'SC'),
-(2, 'Paraná', 'PR');
+(2, 'Paraná', 'PR'),
+(3, 'São Paulo', 'SP');
 
 -- --------------------------------------------------------
 
@@ -83,6 +85,7 @@ CREATE TABLE `inscricao` (
 
 CREATE TABLE `pessoa_fisica` (
   `id` int(11) NOT NULL,
+  `id_perfil` int(11) NOT NULL,
   `nome` varchar(300) NOT NULL,
   `cpf` varchar(11) NOT NULL,
   `endereco` varchar(300) NOT NULL,
@@ -100,14 +103,14 @@ CREATE TABLE `pessoa_fisica` (
 -- Indexes for table `cidades`
 --
 ALTER TABLE `cidades`
-  ADD PRIMARY KEY (`cidades_id`),
+  ADD PRIMARY KEY (`id`),
   ADD KEY `fk_cidades_estados1_idx` (`estados_id`);
 
 --
 -- Indexes for table `estados`
 --
 ALTER TABLE `estados`
-  ADD PRIMARY KEY (`estados_id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `inscricao`
@@ -123,7 +126,6 @@ ALTER TABLE `pessoa_fisica`
   ADD PRIMARY KEY (`id`),
   ADD KEY `fk_pessoa_fisica_cidades1_idx` (`cidades_id`),
   ADD KEY `fk_pessoa_fisica_estados1_idx` (`estados_id`);
-
 --
 -- AUTO_INCREMENT for dumped tables
 --
@@ -132,13 +134,13 @@ ALTER TABLE `pessoa_fisica`
 -- AUTO_INCREMENT for table `cidades`
 --
 ALTER TABLE `cidades`
-  MODIFY `cidades_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `estados`
 --
 ALTER TABLE `estados`
-  MODIFY `estados_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `inscricao`
@@ -160,7 +162,7 @@ ALTER TABLE `pessoa_fisica`
 -- Constraints for table `cidades`
 --
 ALTER TABLE `cidades`
-  ADD CONSTRAINT `fk_cidades_estados1` FOREIGN KEY (`estados_id`) REFERENCES `estados` (`estados_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `fk_cidades_estados1` FOREIGN KEY (`estados_id`) REFERENCES `estados` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `inscricao`
@@ -172,8 +174,8 @@ ALTER TABLE `inscricao`
 -- Constraints for table `pessoa_fisica`
 --
 ALTER TABLE `pessoa_fisica`
-  ADD CONSTRAINT `fk_pessoa_fisica_cidades1` FOREIGN KEY (`cidades_id`) REFERENCES `cidades` (`cidades_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_pessoa_fisica_estados1` FOREIGN KEY (`estados_id`) REFERENCES `estados` (`estados_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `fk_pessoa_fisica_cidades1` FOREIGN KEY (`cidades_id`) REFERENCES `cidades` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_pessoa_fisica_estados1` FOREIGN KEY (`estados_id`) REFERENCES `estados` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 COMMIT;
 
 SET FOREIGN_KEY_CHECKS=1;
