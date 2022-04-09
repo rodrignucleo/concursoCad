@@ -15,14 +15,45 @@
       </div>
 
         <div class="col-md-10 offset-md-1">
-        <section class="mostraGames">
-            @foreach ($inscricao as $inscricao)
-            <h5> <b>Nome</b></h5>
-              {{$inscricao->pessoa_fisica_id}}
-            <h5> <b>Cargo</b></h5>
-              {{$inscricao->cargo}}
-              
-            @endforeach
+        <section >
+          @foreach  ($inscricao as $inscricao)
+          <div class="form-group">
+            _______________________________________________________________________________________________________________________________________________________________________________________
+            <label for="title">Nº Inscrição:</label>
+            <input type="text" class="form" id="id" name="id" value="{{$inscricao->id}}" disabled>
+            <label for="title">Situação:</label>
+            <input type="text" class="form" id="situacao" name="situacao" value="{{$inscricao->situacao}}" disabled>
+            <label for="title">Data Inscrição:</label>
+            <input type="text" class="form" id="date" name="situadatecao" value="{{date( 'd/m/Y' , strtotime($inscricao->created_at))}}" disabled>
+          </div>
+
+            <div class="form-group">
+              <label for="title">Nome Completo:</label>
+              <input type="text" class="form-control" id="nome" name="nome" value="{{$user->name}}" disabled>
+          </div>
+
+          <div class="form-group">
+              <label for="title">CPF:</label> 
+              <input type="text" class="form-control" id="cpf" name="cpf"
+                  placeholder="CPF" maxlength="11" value="{{$pessoafisica->cpf}}" disabled>
+          </div>
+          <div class="form-group">
+              <label for="title">Endereço:</label>
+              <input type="text" class="form-control" id="endereco" name="endereco" value="{{$pessoafisica->endereco}}" disabled>
+          </div>
+          <div class="form-group">
+            <label for="title">Cidade:</label>
+            <input type="text" class="form-control" id="Cidade" name="Cidade" value="{{$cidade->nome}}" disabled>
+            <label for="title">Estado:</label>
+            <input type="textarea" class="form-control" id="estado" name="estado" value="{{$estado->sigla}}" disabled>
+          </div>
+          <div class="form-group">
+            <label for="title">Cargo:</label>
+            <input type="text" class="form-control" id="cargo" name="cargo" value="{{$inscricao->cargo}}" disabled>
+          </div>
+          
+            
+          @endforeach
         </section>
         </div>
         

@@ -30,6 +30,9 @@ class PessoaFisicaController extends Controller
     public function store(Request $request)
     {
         $user = auth()->user();
+        $estado = Estado::all();
+        $cidade = Cidade::all();
+
         $this->validate(
             $request,
             [
@@ -41,20 +44,21 @@ class PessoaFisicaController extends Controller
             ]
         );
 
-	    $pessoa = new PessoaFisica();
-	    $pessoa->nome = $request->nome;
-	    $pessoa->cpf = $request->cpf;
-	    $pessoa->endereco = $request->endereco;
-	    $pessoa->cidades_id = $request->cidades_id;
-	    $pessoa->estados_id = $request->estados_id;
-	    $pessoa->save();
+            $pessoa = new PessoaFisica();
+            $pessoa->id_perfil = $user->id;
+            $pessoa->nome = $request->nome;
+            $pessoa->cpf = $request->cpf;
+            $pessoa->endereco = $request->endereco;
+            $pessoa->cidades_id = $request->cidades_id;
+            $pessoa->estados_id = $request->estados_id;
+            $pessoa->save();
 
-        $inscricao = new Inscricao();
-        $inscricao -> pessoa_fisica_id = $pessoa->id;
-        $inscricao -> cargo = $request->cargo;
-        $inscricao -> save();
-        
-        return redirect('/meus_concursos', ['user' => $user]);
+            $inscricao = new Inscricao();
+            $inscricao -> pessoa_fisica_id = $pessoa->id;
+            $inscricao -> cargo = $request->cargo;
+            $inscricao -> save();
+
+        return view('concursos.createPessoaFisica', ['user' => $user,'estado' => $estado, 'cidade' => $cidade]);
     }
     
     public function update(Request $request)

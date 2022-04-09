@@ -15,7 +15,7 @@
                 @csrf
                 <div class="form-group">
                     <label for="title"><font color="red">*</font>Nome Completo:</label>
-                    <input type="text" class="form-control" id="nome" name="nome" placeholder="{{$user->name}}" value="{{$user->name}}" disabled=""
+                    <input type="text" class="form-control" id="nome" name="nome"  value="{{$user->name}}" placeholder="{{$user->name}}"
                     required="required" oninput="this.value = this.value.replace(/[0-9]/g, '').replace(/[*-/+.;=_]/g, '');"> 
                 </div>
 
@@ -40,7 +40,7 @@
                             <div class=form-group>
                                     <select name="estados_id" id="estados_id" class="form-control">
                                             @foreach ($estado as $estado)
-                                            <option value="{{$estado->estados_id}}">
+                                            <option value="{{$estado->id}}">
                                                 {{$estado->sigla}}
                                             </option>
                                             @endforeach
@@ -50,7 +50,7 @@
                             <div class=form-group>
                                     <select name="cidades_id" id="cidades_id" class="form-control">
                                         @foreach ($cidade as $cidade)
-                                            <option value="{{$cidade->cidades_id}}">
+                                            <option value="{{$cidade->id}}">
                                                 {{$cidade->nome}}
                                             </option>
                                         @endforeach
